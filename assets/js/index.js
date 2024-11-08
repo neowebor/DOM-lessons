@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 /*
   DOM:
     Document
@@ -11,7 +11,7 @@
     window.document - DOM
 */
 
-console.log(document)
+console.log(document);
 
 /*
   концепції взаємодії з DOM:
@@ -20,16 +20,16 @@ console.log(document)
 */
 
 // 1. знайти кнопку
-const buttons = document.getElementsByTagName('button');
+const buttons = document.getElementsByTagName("button");
 const [clickMeBtn] = buttons;
 
 // 2. сказати що робити
-function showMessage () {
+function showMessage() {
   let i = 1;
 
   return () => {
     alert(`You clicked on button ${i++} times`);
-  }
+  };
 }
 
 // 3. при кліку запустити функцію
@@ -41,8 +41,7 @@ function showMessage () {
   listener - функція яка запуститься браузером коли подія відбудеться з target
 */
 
-clickMeBtn.addEventListener('click', showMessage());
-
+clickMeBtn.addEventListener("click", showMessage());
 
 /*
   Методи пошуку елементів у ДОМ-дереві
@@ -65,15 +64,65 @@ clickMeBtn.addEventListener('click', showMessage());
 */
 
 // повертає масивоподібну колекцію всіх елементів на сторінці з вказаним класом
-const [firstErrorBtn] = document.getElementsByClassName('error');
+const [firstErrorBtn] = document.getElementsByClassName("error");
 
 // повертає масивоподібну колекцію всіх елементів на сторінці з вказаним атрибутом name
-const inputs = document.getElementsByName('someInputName');
+const inputs = document.getElementsByName("someInputName");
 
 // повертає перший елемент на сторінці з вказаним айдішніком
-const select1 = document.getElementById('select1');
+const select1 = document.getElementById("select1");
 
 // повертає перший елемент на сторінці з вказаним css селектором
-const h1 = document.querySelector('#h1');
+const h1 = document.querySelector("#h1");
 
-const btns = document.querySelectorAll('button');
+const btns = document.querySelectorAll("button");
+
+/*
+  на кнопку ресет повісити функцію-слухач яка має виводити повідомлення
+    повідомлення має показатися тільки при першому натисканні на кнопку
+*/
+
+const resetBtn = document.getElementById("resetBtn");
+
+// 1. рішення через зовнішню змінну
+// let isMessageShown = false;
+
+// function handleResetBtn() {
+//   if(!isMessageShown) {
+//     alert('Ви клікнули на кнопку reset');
+//     isMessageShown = true;
+//   }
+
+// }
+
+// рішення 2 - зробити одноразовим об'єкт налаштувань addEventListener
+// function handleResetBtn() {
+//   alert("Ви клікнули на кнопку reset");
+// }
+
+// рішення 3
+function handleResetBtn(event) {
+  // об'єкт події, що трапилась
+  console.log(event)
+
+  // посилання на об'єкт з якими сталася подія
+  console.log(event.target);
+
+  // посилання на об'єкт, чий обробник було запущено
+  console.log(event.currentTarget)
+
+  alert("Ви клікнули на кнопку reset");
+
+  // прибираємо слуха після того як він відпрацював
+  // resetBtn.removeEventListener("click", handleResetBtn);
+}
+
+// function testFunc () {
+//   console.log('testing');
+// }
+
+resetBtn.addEventListener("click", handleResetBtn);
+// resetBtn.addEventListener("click", testFunc);
+
+
+// dispatchEvent - симулює подію на якомусь елементі
