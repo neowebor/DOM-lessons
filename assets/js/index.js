@@ -146,3 +146,45 @@ resetBtn.addEventListener("click", handleResetBtn);
 
   node.textContent - містить текстовий вміст цього вузла. Дозволяє міняти текст вузла / елемента
 */
+
+const myBtn = document.querySelector('.button');
+const myParagraph = document.querySelector('.button-text');
+
+function handleSquareBtnClick() {
+  const number = +prompt('Enter your number:');
+
+  if(isNaN(number)) {
+    throw new TypeError('Invalid type');
+  }
+
+  myParagraph.textContent =  Math.pow(number, 2);
+}
+
+myBtn.addEventListener('click', handleSquareBtnClick);
+
+/*
+  Фази обробки подій:
+    1. дивиться з ким сталася наша подія (занурення)
+    2. найглибший елемент у дереві з яким подія трапилась (target) 
+    3. браузер запускає обробники подій починаючи з найглибшого до найпершого (всплиття)
+*/
+
+// btn -> container -> body -> document
+
+// якщо я хочу, щоб всплиття зупинилось, можно визвати event.stopPropagation() - буквально припиняється подальший запуск обробників подій
+
+// const btn1 = document.getElementById('btn1');
+// const btn2 = document.getElementById('btn2');
+// const btn3 = document.getElementById('btn3');
+// const btn4 = document.getElementById('btn4');
+
+const btnContainer = document.getElementById('btn-container')
+
+function logText(e) {
+  if(e.target.tagName === 'BUTTON') {
+    console.log(e.target.textContent);
+  }
+}
+
+btnContainer.addEventListener('click', logText);
+
