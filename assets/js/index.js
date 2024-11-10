@@ -200,32 +200,59 @@ themeContainer.addEventListener("click", handleSwitchTheme);
   Форми
 */
 
-const formSubmitBtn = document.getElementById("formSubmitBtn");
-const form = document.getElementById("form");
+// const formSubmitBtn = document.getElementById("formSubmitBtn");
+// const form = document.getElementById("form");
 
 // formSubmitBtn.addEventListener('click', (e) => {
 //   console.log('test');
 //   e.preventDefault();
 // })
 
-form.addEventListener("submit", (e) => {
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+
+//   const { target: formElement } = e;
+
+//   // всі інтеррактивні елементи форми
+//   console.log(formElement.elements);
+
+//   const formInput = formElement.elements.inputName;
+
+//   // отримати значення, яке було введено в input - value
+//   console.log(formInput.value);
+
+//   // тут тексту не буде
+//   // console.log(formInput.textContent);
+
+//   // очистка даних у формі
+//   // formInput.value = '';
+
+//   formElement.reset();
+// });
+
+/*
+  рішення задачки
+*/
+
+const squareForm = document.getElementById("squareForm");
+const squareDisplay = document.querySelector(".squareDisplay");
+
+squareForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  const { target: formElement } = e;
-
-  // всі інтеррактивні елементи форми
-  console.log(formElement.elements);
+  const {
+    target: {
+      elements: { num },
+    },
+    target
+  } = e;
   
-  const formInput = formElement.elements.inputName;
+  const number = +num.value;
+  if(isNaN(number)) {
+    squareDisplay.textContent = `Введіть корректне число`;
+  } else {
+    squareDisplay.textContent = `Результат: ${Math.pow(num.value, 2)}`;
+  }
 
-  // отримати значення, яке було введено в input - value
-  console.log(formInput.value);
 
-  // тут тексту не буде
-  // console.log(formInput.textContent);
-
-  // очистка даних у формі
-  // formInput.value = '';
-
-  formElement.reset();
+  target.reset();
 });
