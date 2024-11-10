@@ -256,3 +256,38 @@ squareForm.addEventListener("submit", (e) => {
 
   target.reset();
 });
+
+const imgSwitchBtn = document.getElementById('imgSwitchBtn');
+const picture = document.getElementById('picture');
+
+imgSwitchBtn.addEventListener('click', (e) => {
+
+  // зміна атрибутів
+
+  // сеттери для унікальних атрибутів елемента / деяких глобальних атрибутів
+  // picture.src = 'assets/img/cat.jpg';
+  // picture.alt = 'Кіт'
+
+  // через setAttribute
+  // picture.setAttribute('src', 'assets/img/cat.jpg')
+  // picture. setAttribute('src', 'Кіт')
+
+  // через вузол-атрибут
+
+  // const srcNode = document.createAttribute('src');
+  // console.dir(srcNode)
+  // srcNode.value = 'assets/img/cat.jpg';
+
+  // picture.setAttributeNode(srcNode);
+
+})
+
+/*
+  ще деякі цікаві методи роботи з атрибутами:
+
+  picture.hasAttribute('src') - перевірка наявності атрибута
+  picture.getAttribute('src') - отримання значення атрибута
+  picture.getAttributeNode('src') - отримати об'єкт вузла атрибута
+
+  picture.removeAttribute('src') - прибирає атрибут з елемента
+*/
