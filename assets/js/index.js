@@ -103,13 +103,13 @@ const resetBtn = document.getElementById("resetBtn");
 // рішення 3
 function handleResetBtn(event) {
   // об'єкт події, що трапилась
-  console.log(event)
+  console.log(event);
 
   // посилання на об'єкт з якими сталася подія
   console.log(event.target);
 
   // посилання на об'єкт, чий обробник було запущено
-  console.log(event.currentTarget)
+  console.log(event.currentTarget);
 
   alert("Ви клікнули на кнопку reset");
 
@@ -123,7 +123,6 @@ function handleResetBtn(event) {
 
 resetBtn.addEventListener("click", handleResetBtn);
 // resetBtn.addEventListener("click", testFunc);
-
 
 // dispatchEvent - симулює подію на якомусь елементі
 
@@ -147,20 +146,20 @@ resetBtn.addEventListener("click", handleResetBtn);
   node.textContent - містить текстовий вміст цього вузла. Дозволяє міняти текст вузла / елемента
 */
 
-const myBtn = document.querySelector('.button');
-const myParagraph = document.querySelector('.button-text');
+const myBtn = document.querySelector(".button");
+const myParagraph = document.querySelector(".button-text");
 
 function handleSquareBtnClick() {
-  const number = +prompt('Enter your number:');
+  const number = +prompt("Enter your number:");
 
-  if(isNaN(number)) {
-    throw new TypeError('Invalid type');
+  if (isNaN(number)) {
+    throw new TypeError("Invalid type");
   }
 
-  myParagraph.textContent =  Math.pow(number, 2);
+  myParagraph.textContent = Math.pow(number, 2);
 }
 
-myBtn.addEventListener('click', handleSquareBtnClick);
+myBtn.addEventListener("click", handleSquareBtnClick);
 
 /*
   Фази обробки подій:
@@ -178,13 +177,55 @@ myBtn.addEventListener('click', handleSquareBtnClick);
 // const btn3 = document.getElementById('btn3');
 // const btn4 = document.getElementById('btn4');
 
-const btnContainer = document.getElementById('btn-container')
+const btnContainer = document.getElementById("btn-container");
 
 function logText(e) {
-  if(e.target.tagName === 'BUTTON') {
+  if (e.target.tagName === "BUTTON") {
     console.log(e.target.textContent);
   }
 }
 
-btnContainer.addEventListener('click', logText);
+btnContainer.addEventListener("click", logText);
 
+const themeContainer = document.getElementById("theme-container");
+
+function handleSwitchTheme(e) {
+  if (e.target.tagName === "BUTTON") {
+  }
+}
+
+themeContainer.addEventListener("click", handleSwitchTheme);
+
+/*
+  Форми
+*/
+
+const formSubmitBtn = document.getElementById("formSubmitBtn");
+const form = document.getElementById("form");
+
+// formSubmitBtn.addEventListener('click', (e) => {
+//   console.log('test');
+//   e.preventDefault();
+// })
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const { target: formElement } = e;
+
+  // всі інтеррактивні елементи форми
+  console.log(formElement.elements);
+  
+  const formInput = formElement.elements.inputName;
+
+  // отримати значення, яке було введено в input - value
+  console.log(formInput.value);
+
+  // тут тексту не буде
+  // console.log(formInput.textContent);
+
+  // очистка даних у формі
+  // formInput.value = '';
+
+  formElement.reset();
+});
