@@ -41,7 +41,7 @@ function showMessage() {
   listener - функція яка запуститься браузером коли подія відбудеться з target
 */
 
-clickMeBtn.addEventListener("click", showMessage());
+// clickMeBtn.addEventListener("click", showMessage());
 
 /*
   Методи пошуку елементів у ДОМ-дереві
@@ -243,44 +243,36 @@ squareForm.addEventListener("submit", (e) => {
     target: {
       elements: { num },
     },
-    target
+    target,
   } = e;
-  
+
   const number = +num.value;
-  if(isNaN(number)) {
+  if (isNaN(number)) {
     squareDisplay.textContent = `Введіть корректне число`;
   } else {
     squareDisplay.textContent = `Результат: ${Math.pow(num.value, 2)}`;
   }
 
-
   target.reset();
 });
 
-const imgSwitchBtn = document.getElementById('imgSwitchBtn');
-const picture = document.getElementById('picture');
+const imgSwitchBtn = document.getElementById("imgSwitchBtn");
+const picture = document.getElementById("picture");
 
-imgSwitchBtn.addEventListener('click', (e) => {
-
+imgSwitchBtn.addEventListener("click", (e) => {
   // зміна атрибутів
-
   // сеттери для унікальних атрибутів елемента / деяких глобальних атрибутів
   // picture.src = 'assets/img/cat.jpg';
   // picture.alt = 'Кіт'
-
   // через setAttribute
   // picture.setAttribute('src', 'assets/img/cat.jpg')
-  // picture. setAttribute('src', 'Кіт')
-
+  // picture.setAttribute('src', 'Кіт')
   // через вузол-атрибут
-
   // const srcNode = document.createAttribute('src');
   // console.dir(srcNode)
   // srcNode.value = 'assets/img/cat.jpg';
-
   // picture.setAttributeNode(srcNode);
-
-})
+});
 
 /*
   ще деякі цікаві методи роботи з атрибутами:
@@ -291,3 +283,25 @@ imgSwitchBtn.addEventListener('click', (e) => {
 
   picture.removeAttribute('src') - прибирає атрибут з елемента
 */
+
+const attrImg = document.getElementById("attrImg");
+const attrBtn = document.getElementById("attrBtn");
+
+const imgData = [
+  ["assets/img/nature.jpg", "nature"],
+  ["assets/img/cat.jpg", "cat"],
+];
+
+attrImg.setAttribute("src", imgData[0][0]);
+attrImg.setAttribute("alt", imgData[0][1]);
+
+attrBtn.addEventListener("click", (e) => {
+  const currentSrc = attrImg.getAttribute("src");
+
+  const imgIndex = imgData.findIndex((image) => currentSrc === image[0]);
+
+  const [src, alt] = imgData[(imgIndex + 1) % imgData.length];
+
+  attrImg.setAttribute('src', src);
+  attrImg.setAttribute('alt', alt);
+});
