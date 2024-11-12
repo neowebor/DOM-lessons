@@ -346,3 +346,12 @@ buttonWrap.addEventListener("click", (e) => {
     buttonWrap.style.backgroundColor = bg;
   }
 });
+
+const elem = document.createElement('div');
+elem.id = 'text';
+elem.textContent = 'Hello from DOM';
+
+const rootDiv = document.getElementById('root')
+
+// вставка elem останньою дитиною rootDiv
+rootDiv.appendChild(elem)
