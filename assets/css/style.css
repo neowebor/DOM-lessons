@@ -8,3 +8,22 @@
   background-color: red;
   color: white;
 }
+
+.button-wrap {
+  padding: 20px;
+}
+
+[data-theme="black"] {
+  background-color: black;
+  color: white;
+}
+
+[data-theme="white"] {
+  background-color: white;
+  color: black;
+}
+
+[data-theme="red"] {
+  background-color: red;
+  color: white;
+}

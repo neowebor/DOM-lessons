@@ -302,6 +302,47 @@ attrBtn.addEventListener("click", (e) => {
 
   const [src, alt] = imgData[(imgIndex + 1) % imgData.length];
 
-  attrImg.setAttribute('src', src);
-  attrImg.setAttribute('alt', alt);
+  attrImg.setAttribute("src", src);
+  attrImg.setAttribute("alt", alt);
+});
+
+/*
+  Користувацькі атрибути (data-*)
+  атрибути, які починаються з data-
+*/
+
+// const div = document.getElementById('div');
+
+// // отримання значення користувацького атрибуту
+// const currentTheme = div.getAttribute('data-theme');
+
+// div.setAttribute('data-theme', 'dark')
+
+// const black = document.getElementById('black');
+// const white = document.getElementById('white');
+// const red = document.getElementById('red');
+
+// const buttonWrap = document.querySelector('.button-wrap');
+
+// black.addEventListener('click', (e) => {
+//   buttonWrap.setAttribute('data-theme', 'black');
+// });
+
+// white.addEventListener('click', (e) => {
+//   buttonWrap.setAttribute('data-theme', 'white');
+// });
+
+// red.addEventListener('click', (e) => {
+//   buttonWrap.setAttribute('data-theme', 'red');
+// });
+
+const buttonWrap = document.querySelector(".button-wrap");
+
+buttonWrap.addEventListener("click", (e) => {
+  const { target } = e;
+
+  if (target.tagName === "BUTTON") {
+    const bg = target.dataset.bg;
+    buttonWrap.style.backgroundColor = bg;
+  }
 });

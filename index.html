@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <div style="display: flex; flex-direction: column;">
-      <img src="" alt="" id="attrImg">
+    <div style="display: flex; flex-direction: column">
+      <img src="" alt="" id="attrImg" />
       <button id="attrBtn">Switch Image</button>
     </div>
 
@@ -26,7 +26,10 @@
       <p class="button-text">(here will be the square of your number)</p>
     </div>
 
-    <div style="margin: 20px; padding: 20px; border: 4px dashed black" id="btn-container">
+    <div
+      style="margin: 20px; padding: 20px; border: 4px dashed black"
+      id="btn-container"
+    >
       <button id="btn1">1</button>
       <button id="btn2">2</button>
       <button id="btn3">3</button>
@@ -54,12 +57,18 @@
 
     <p class="squareDisplay">Тут з'явиться ваше число в квадраті</p>
     <form id="squareForm">
-      <input type="text" name="num">
+      <input type="text" name="num" />
       <button type="submit">Розрахувати квадрат</button>
     </form>
 
-    <img src="assets/img/nature.jpg" alt="Природа" id="picture">
+    <img src="assets/img/nature.jpg" alt="Природа" id="picture" />
     <button id="imgSwitchBtn">Зробити картинку котом</button>
+
+    <div class="button-wrap">
+      <button data-bg="black">Чорний</button>
+      <button data-bg="white">Білий</button>
+      <button data-bg="red">Красний</button>
+    </div>
 
     <script src="assets/js/index.js"></script>
   </body>
