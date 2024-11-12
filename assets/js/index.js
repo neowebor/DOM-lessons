@@ -284,27 +284,27 @@ imgSwitchBtn.addEventListener("click", (e) => {
   picture.removeAttribute('src') - прибирає атрибут з елемента
 */
 
-const attrImg = document.getElementById("attrImg");
-const attrBtn = document.getElementById("attrBtn");
+// const attrImg = document.getElementById("attrImg");
+// const attrBtn = document.getElementById("attrBtn");
 
-const imgData = [
-  ["assets/img/nature.jpg", "nature"],
-  ["assets/img/cat.jpg", "cat"],
-];
+// const imgData = [
+//   ["assets/img/nature.jpg", "nature"],
+//   ["assets/img/cat.jpg", "cat"],
+// ];
 
-attrImg.setAttribute("src", imgData[0][0]);
-attrImg.setAttribute("alt", imgData[0][1]);
+// attrImg.setAttribute("src", imgData[0][0]);
+// attrImg.setAttribute("alt", imgData[0][1]);
 
-attrBtn.addEventListener("click", (e) => {
-  const currentSrc = attrImg.getAttribute("src");
+// attrBtn.addEventListener("click", (e) => {
+//   const currentSrc = attrImg.getAttribute("src");
 
-  const imgIndex = imgData.findIndex((image) => currentSrc === image[0]);
+//   const imgIndex = imgData.findIndex((image) => currentSrc === image[0]);
 
-  const [src, alt] = imgData[(imgIndex + 1) % imgData.length];
+//   const [src, alt] = imgData[(imgIndex + 1) % imgData.length];
 
-  attrImg.setAttribute("src", src);
-  attrImg.setAttribute("alt", alt);
-});
+//   attrImg.setAttribute("src", src);
+//   attrImg.setAttribute("alt", alt);
+// });
 
 /*
   Користувацькі атрибути (data-*)
@@ -347,11 +347,61 @@ buttonWrap.addEventListener("click", (e) => {
   }
 });
 
-const elem = document.createElement('div');
-elem.id = 'text';
-elem.textContent = 'Hello from DOM';
+const elem = document.createElement("div");
+elem.id = "text";
+elem.textContent = "Hello from DOM";
 
-const rootDiv = document.getElementById('root')
+const rootDiv = document.getElementById("root");
 
 // вставка elem останньою дитиною rootDiv
-rootDiv.appendChild(elem)
+rootDiv.appendChild(elem);
+
+/*
+  Element - клас елементів у ДОМ
+
+  elem.children - отримати доступ до дітей-елементів певного елемента 
+  elem.className - Рядок з класом елемента
+  elem.className = 'class-1 class-2' - заміна класів для елементу
+
+  elem.classList - об'єкт атрибуту класу
+  elem.classList.add('className') - додає до існуючих класів новий класс
+  elem.classList.remove() - прибирає вказаний клас/и зі списку існуючих
+  elem.classList.toggle('className') - додає або видаляє вказаний клас в залежності від того є він чи його нема
+
+  elem.innerHTML - дає доступ до повної внутрішньої HTML розмітки елемента
+*/
+
+const post = {
+  user: "Test Testovich",
+  id: 1,
+  title:
+    "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+};
+
+const renderRoot = document.getElementById('renderRoot');
+
+function createPost(postObject) {
+  const postArticle = document.createElement('article');
+  postArticle.classList.add('post');
+
+  const postTitle = document.createElement('h2');
+  postTitle.classList.add('post-title');
+  postTitle.textContent = postObject.title;
+
+  const postSubtitle = document.createElement('h3');
+  postSubtitle.classList.add('post-subtitle');
+  postSubtitle.textContent = postObject.user;
+
+  const postText = document.createElement('p');
+  postText.classList.add('post-text');
+  postText.textContent = postObject.body;
+
+  postArticle.append(postTitle, postSubtitle, postText);
+
+  return postArticle;
+}
+
+const post1Elem = createPost(post);
+
+renderRoot.append(post1Elem);
