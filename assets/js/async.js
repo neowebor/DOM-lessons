@@ -42,3 +42,60 @@ const intervalId = setInterval(() => {
 }, 1500)
 
 clearInterval(intervalId);
+// console.time('timer');
+// let i = 1;
+
+// const intervalFunc = setInterval(() => {
+//   console.log(i++);
+
+//   if(i > 10) {
+//     clearInterval(intervalFunc)
+//     console.timeEnd('timer')
+//   }
+// }, 100);
+// let i = 0;
+
+// function mySetTimeoutFunc() {
+
+//   setTimeout(() => {
+//     if(i > 10) {
+//       return;
+//     }
+//     i++;
+
+//     console.log(i);
+
+//     mySetTimeoutFunc();
+//   }, 1000)
+// }
+
+
+const userData = {
+  email: 'test@test.test',
+  password: '12345admin',
+  id: 5,
+  address: {
+    city: 'Kozatyn',
+    country: 'Ukraine',
+  },
+  friends: [],
+  isMale: true,
+  someImportantData: null,
+  someSymbol: Symbol('test me plz'),
+  age: undefined,
+  isAdult: function () {
+    return this.age >= 18;
+  }
+}
+
+// серіалізація - процес перетворення даних у вигляд зручний для передачі
+const jsonString = JSON.stringify(userData);
+/*
+  відмінності JSON та JS
+  1. рядки в JSON можуть бути тільки подвійними лапками
+  2. ключи в об'єктах мають бути рядками
+  3. відсутність висячих ком у кінці об'єктів та масивів 
+*/
+
+// десереалізація - процес відновлення  даних із зручного для передачі формату
+const userData2 = JSON.parse(jsonString)
