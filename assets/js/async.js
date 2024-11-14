@@ -99,3 +99,69 @@ const jsonString = JSON.stringify(userData);
 
 // десереалізація - процес відновлення  даних із зручного для передачі формату
 const userData2 = JSON.parse(jsonString)
+
+
+// Promise - обіцянка, сучасни спосіб написання асинхронного коду у JS
+// вирішує проблему коллбек хела
+/*
+  проміс - спеціальний об'єкт містить результат роботи асинхронної операції
+
+  у об'єкта проміса є 3 можливих стани
+    - pending (очікується) - очікує виконання асинхроної операції
+    - fullfiled (виконаний) - асинхрона операція була успішно завершена
+    - rejected (відхилений) - у промісі сталася помилка
+
+  проміс може знаходитись у 2 з цих трьох станів
+
+    pending -> fullfiled
+    pending -> rejected
+*/
+
+// const promise = new Promise(executor);
+
+// function executor (resolve, reject) {
+//   // console.log(resolve);
+//   // console.log(reject);
+
+//   // функція яка сигналізує, що дія виконана успішно
+//   // і аргумент цієї функції буде результуючим
+//   // resolve('test string')
+//   reject('test string')
+  
+// }
+
+
+// then - метод який дозволить зреагувати на завершення асинхронної операції
+// promise.then(
+//   // запускається при успішному виконанні проміса
+//   function fullfilledCallback(param) {
+//     console.log('promise fullfilled');
+//     console.log(param); // результат роботи проміса   
+//   },
+//   function rejectedCallback (error) {
+//     console.log('promise rejected');
+//     console.error(error);
+//   }
+// )
+
+// catch - метод для обробки помилок в промісах
+// promise.catch(function rejectedCallback (error) {
+//   console.log('promise rejected');
+//   console.log(error);
+// });
+
+const randomPromise = new Promise(executor);
+
+function executor (resolve, reject) {
+  Math.random() > 0.5 ? resolve('success') : reject('unlucky');
+}
+
+randomPromise.then((param) => {
+  console.log(param);
+}).catch((param) => {
+  console.log(param)
+});
+
+// randomPromise.catch((param) => {
+//   console.log(param);
+// })
