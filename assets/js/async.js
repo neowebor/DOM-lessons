@@ -165,3 +165,13 @@ randomPromise.then((param) => {
 // randomPromise.catch((param) => {
 //   console.log(param);
 // })
+
+fetch('https://jsonplaceholder.typicode.com/posts/1')
+  .then((response) => {
+  // console.log(response)
+
+  // асинхроний метод десереалізації даних
+  return response.json();
+}).then((data) => {
+  console.log(data)
+})
